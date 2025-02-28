@@ -1,8 +1,10 @@
+import ast
 from typing import Any
 from vector_db import db_collection
 
 
-def get_related_products(product_details: str, no_of_products_specified: int) -> str:
+
+def get_related_products(product_details: str, no_of_products_specified: int,general_question:str) -> str:
     # product_details: list[dict[str, str]], general: bool
     """
     Retrieves related products based on the given product details and no_of_products_specified.
@@ -22,10 +24,36 @@ def get_related_products(product_details: str, no_of_products_specified: int) ->
         no_of_products_specified (int): 
             - The number of products relevant to the user's query.
             - If the query is product-specific, set it to the number of specified products.
-            - If the query is general, set it to 5.
+            - If the query is general, set it to 3.
+        general_question (str):
+            - A rephrased query for retrieving general product details from the vector database.
     """
+    
     print("product details:", product_details)
     print("type product details:", type(product_details))
+    print("general_question:", general_question)
+
+    try:
+        product_details = ast.literal_eval(product_details)
+        print("converted:",product_details)
+        results=[]
+        if len(product_details)==1 and  no_of_products_specified>1:
+            # complete general question
+            max_n_items= no_of_products_specified
+        else:
+            # multiple product items related question or single product related question
+            max_n_items=1
+
+        for single_prd in product_details:
+            new_result=db_collection.get_matching_items(
+                query_text=str(single_prd), max_n_items=max_n_items
+            )[0]
+            results.extend(new_result)
+    except (SyntaxError, ValueError) as e:
+        print(f"Error parsing string: {e}")
+        results=db_collection.get_matching_items(
+                query_text=str(product_details), max_n_items=no_of_products_specified
+            )[0]
     # try:
     #     product_details=product_details.to_list()
     #     print("list of prd:",product_details)
@@ -33,23 +61,17 @@ def get_related_products(product_details: str, no_of_products_specified: int) ->
     #     print("exception:",e)
 
     print("no of products:",no_of_products_specified)
-
-    results=db_collection.get_matching_items(
-                query_text=str(product_details), max_n_items=no_of_products_specified+1
-            )
+    
+    
+    # general_result=db_collection.get_matching_items(
+    #             query_text=general_question, max_n_items=no_of_products_specified
+    #         )[0]
+    # print("\n\n\nprd results:",results)
+    # print("\n\n\ngen results:",general_result)
+    # results.extend(general_result)
+    # results=list(set(results))
+    
 
     print("\nresult: ", results)
     return str(results)
-    # return str( {
-    #         "Product": "Omega 4K OLED TV",
-    #         "Category": "Smart TV",
-    #         "Price": "$990",
-    #         "Features": ["50\" 4K OLED display", "Dolby Vision", "AI-powered upscaling"],
-    #         "Colors": ["Black", "Gray"],
-    #         "Availability": "Limited stock",
-    #         "Shipping Policy": {
-    #             "Standard Shipping (5-7 business days)": "$22.99",
-    #             "Express Shipping (2-3 business days)": "$47.99",
-    #             "Free Standard Shipping on Orders Over": "$500"
-    #         }
-    #     })
+
