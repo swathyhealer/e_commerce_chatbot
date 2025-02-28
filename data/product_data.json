@@ -1,0 +1,124 @@
+{
+    "products": [
+        {
+            "Product": "UltraPhone X",
+            "Price": "$799",
+            "Features": ["6.5\" OLED display", "128GB storage", "12MP camera"],
+            "Colors": ["Black", "Silver", "Blue"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$4.99",
+                "Express Shipping (1-2 business days)": "$12.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "YokiPhone Z",
+            "Price": "$749",
+            "Features": ["6.4\" AMOLED display", "256GB storage", "50MP camera"],
+            "Colors": ["Gray", "Green", "Red"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$4.99",
+                "Express Shipping (1-2 business days)": "$11.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "GigaTab Pro",
+            "Price": "$599",
+            "Features": ["10.5\" LCD display", "256GB storage", "8MP camera"],
+            "Colors": ["Gray", "Gold", "White"],
+            "Availability": "Limited stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$5.99",
+                "Express Shipping (1-2 business days)": "$14.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "MirchiTab Max",
+            "Price": "$579",
+            "Features": ["11\" Liquid Retina display", "512GB storage", "12MP ultra-wide camera"],
+            "Colors": ["Black", "Silver"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$6.99",
+                "Express Shipping (1-2 business days)": "$15.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "Geo SmartWatch Z",
+            "Price": "$199",
+            "Features": ["1.5\" AMOLED display", "Heart rate monitor", "GPS tracking"],
+            "Colors": ["Black", "Rose Gold", "Blue"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$3.99",
+                "Express Shipping (1-2 business days)": "$9.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "Ari SmartWatch pro",
+            "Price": "$179",
+            "Features": ["1.6\" Retina display", "Blood oxygen monitoring", "GPS & NFC"],
+            "Colors": ["Silver", "Black"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$3.99",
+                "Express Shipping (1-2 business days)": "$8.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "Cami NoiseCancel Headphones",
+            "Price": "$249",
+            "Features": ["Over-ear design", "Active noise cancellation", "Bluetooth 5.0"],
+            "Colors": ["Black", "White", "Red"],
+            "Availability": "Out of stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$4.99",
+                "Express Shipping (1-2 business days)": "$11.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "Everfinder ANC Headphones",
+            "Price": "$229",
+            "Features": ["On-ear design", "Adaptive noise cancellation", "Bluetooth 5.2"],
+            "Colors": ["Black", "Blue"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (3-5 business days)": "$4.99",
+                "Express Shipping (1-2 business days)": "$10.99",
+                "Free Standard Shipping on Orders Over": "$50"
+            }
+        },
+        {
+            "Product": "LG 4K Smart TV",
+            "Price": "$999",
+            "Features": ["55\" 4K UHD display", "HDR10+", "Built-in streaming apps"],
+            "Colors": ["Black"],
+            "Availability": "In stock",
+            "Shipping Policy": {
+                "Standard Shipping (5-7 business days)": "$24.99",
+                "Express Shipping (2-3 business days)": "$49.99",
+                "Free Standard Shipping on Orders Over": "$500"
+            }
+        },
+        {
+            "Product": "Omega 4K OLED TV",
+            "Price": "$990",
+            "Features": ["50\" 4K OLED display", "Dolby Vision", "AI-powered upscaling"],
+            "Colors": ["Black", "Gray"],
+            "Availability": "Limited stock",
+            "Shipping Policy": {
+                "Standard Shipping (5-7 business days)": "$22.99",
+                "Express Shipping (2-3 business days)": "$47.99",
+                "Free Standard Shipping on Orders Over": "$500"
+            }
+        }
+    ]
+}
