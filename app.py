@@ -26,7 +26,7 @@ def run_agent():
             break
         response = chat_agent.send_msg(query)
         # response = qa_chain.run(query)
-        print("customer service specialist :", response)
+        print("customer service specialist :", str(response))
 
     print("\n\n\n end---------------------------------------------------------------------------")
     chat_agent.get_history()

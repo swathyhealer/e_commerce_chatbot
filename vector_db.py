@@ -20,7 +20,7 @@ class ChromaVectorDB:
             doc_str = json.dumps(doc)
             embedding = self.__emb_model__.generate_embeddings([doc_str])
 
-            self.collection.add(
+            self.collection.upsert(
                 ids=[str(i)], embeddings=[embedding], documents=[doc_str]
             )
             time.sleep(1)  # to avoid the quota error
@@ -47,13 +47,14 @@ def vector_db_setup(collection_name, product_json_path):
     prds = data["products"]
     vec_db = ChromaVectorDB(emb_model=GeminiEmbeddingModel())
     vec_db.create_collection(collection_name=collection_name)
-    # vec_db.update_collection(docs=prds)
+    vec_db.update_collection(docs=prds)
     return vec_db
 
 
 db_collection = vector_db_setup(
-    collection_name="sample3", product_json_path="data/product_data.json"
+    collection_name="sample1111", product_json_path="data/product_data.json"
 )
+print("count:",db_collection.collection.count())
 # d= {
 
 #             "Category": "Smart TV",
