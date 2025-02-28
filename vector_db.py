@@ -11,7 +11,9 @@ class ChromaVectorDB:
         self.collection = None
 
     def create_collection(self, collection_name):
-        self.collection = self.__client__.get_or_create_collection(name=collection_name)
+        self.collection = self.__client__.get_or_create_collection(name=collection_name,metadata={
+        "hnsw:space": "cosine"
+    })
 
     def update_collection(self, docs: list[dict]):
         for i, doc in enumerate(docs):
@@ -50,7 +52,7 @@ def vector_db_setup(collection_name, product_json_path):
 
 
 db_collection = vector_db_setup(
-    collection_name="sample2", product_json_path="data/product_data.json"
+    collection_name="sample3", product_json_path="data/product_data.json"
 )
 # d= {
 
