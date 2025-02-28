@@ -8,6 +8,26 @@ class GeminiAgentWithRAGTool:
         self.__client__ = genai.Client(
             api_key="AIzaSyAgRL_W_f3sh3nx3cJTj7cPj5PRXzmLDOg"
         )
+    #     query_function=types.FunctionDeclaration(
+    # name='get_related_products',
+    # description='Retrieves related products based on the given product details or general category queries.',
+#     parameters=types.Schema(
+#         type='OBJECT',
+#         properties={
+#             'product_details': types.Schema(
+#                 type='ARRAY',
+#                 description="A list of dictionaries, each containing details about a product.",
+#             ),
+#             'general':types.Schema(
+#                 type='BOOLEAN',
+#                 description="A flag indicating whether the query is general (`True`) or product-specific (`False`).",
+#             ),
+#         },
+#         required=['product_details','general'],
+#     ),
+# )
+
+        # tool = types.Tool(function_declarations=[query_function]),
         safety_settings = [
             types.SafetySetting(
                 category="HARM_CATEGORY_DANGEROUS_CONTENT",
@@ -22,6 +42,7 @@ class GeminiAgentWithRAGTool:
             #   disable=False
             #  )
             tools=[get_related_products],
+            # tools=[tool],
             # tool_config=ToolConfig(
             #     function_calling_config=FunctionCallingConfig(
             #         mode=FunctionCallingConfigMode.AUTO
@@ -44,7 +65,7 @@ You are an AI-powered customer service assistant for an e-commerce platform. You
     Once the query type and required details are determined, invoke the tool get_related_products with the following parameters:
     {
     "product_details": [<list of relevant products>],
-    "general": <true/false>
+    "no_of_products_specified": <number of products>
     }
 
     Where:
@@ -63,23 +84,26 @@ You are an AI-powered customer service assistant for an e-commerce platform. You
                 }
             }
 
-        general: A boolean indicating if the query is general (true) or product-specific (false).
+        no_of_products_specified:
+
+            If the query is about specific products, set it to the number of mentioned products.
+            If it is a general query, set it to 5.
 
 Example Scenarios
     1. Product-Specific Query
         User: What are the features of UltraPhone X?
         Extract product details of "UltraPhone X"
-        Call get_related_products with product_details and general=false
+        Call get_related_products with product_details and no_of_products_specified=1
 
     2. Multi-Product Query
         User: Compare UltraPhone X and SmartPhone Y
         Extract details for both products
-        Call get_related_products with product_details and general=false
+        Call get_related_products with product_details and no_of_products_specified=2
 
     3. General Query
         User: What are the features of mobile phones?
         Extract general mobile phone features
-        Call get_related_products with product_details and general=true
+        Call get_related_products with product_details and no_of_products_specified=5
 
 Response Generation
     After receiving the response from get_related_products, generate a clear, concise, and helpful response to the user.
@@ -101,6 +125,17 @@ Response Generation
             response = "I don't know"
 
         return response
+    
+    def get_history(self):
+        for chat_item in self.__chat__._curated_history:
+            print(type(chat_item))
+            for i,part in enumerate(chat_item.parts):
+                print("type of part",type(part))
+                print(f"------------------{i}---------------------------------")
+                print("function call :",part.function_call)
+                print("function_response :",part.function_response)
+                print("text :",part.text)
+                print("role :,",chat_item.role)
 
 
 # agent=GeminiAgentWithRAGTool()

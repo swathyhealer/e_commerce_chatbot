@@ -28,6 +28,8 @@ def run_agent():
         # response = qa_chain.run(query)
         print("customer service specialist :", response)
 
+    print("\n\n\n end---------------------------------------------------------------------------")
+    chat_agent.get_history()
 
 if __name__ == "__main__":
     run_agent()
