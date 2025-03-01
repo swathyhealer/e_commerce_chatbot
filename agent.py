@@ -8,26 +8,7 @@ class GeminiAgentWithRAGTool:
         self.__client__ = genai.Client(
             api_key="AIzaSyAgRL_W_f3sh3nx3cJTj7cPj5PRXzmLDOg"
         )
-    #     query_function=types.FunctionDeclaration(
-    # name='get_related_products',
-    # description='Retrieves related products based on the given product details or general category queries.',
-#     parameters=types.Schema(
-#         type='OBJECT',
-#         properties={
-#             'product_details': types.Schema(
-#                 type='ARRAY',
-#                 description="A list of dictionaries, each containing details about a product.",
-#             ),
-#             'general':types.Schema(
-#                 type='BOOLEAN',
-#                 description="A flag indicating whether the query is general (`True`) or product-specific (`False`).",
-#             ),
-#         },
-#         required=['product_details','general'],
-#     ),
-# )
 
-        # tool = types.Tool(function_declarations=[query_function]),
         safety_settings = [
             types.SafetySetting(
                 category="HARM_CATEGORY_DANGEROUS_CONTENT",
@@ -38,16 +19,7 @@ class GeminiAgentWithRAGTool:
             temperature=0,
             seed=5,
             safety_settings=safety_settings,
-            #         automatic_function_calling=types.AutomaticFunctionCallingConfig(
-            #   disable=False
-            #  )
             tools=[get_related_products],
-            # tools=[tool],
-            # tool_config=ToolConfig(
-            #     function_calling_config=FunctionCallingConfig(
-            #         mode=FunctionCallingConfigMode.AUTO
-            #     )
-            # ),
             system_instruction="""
 You are an AI-powered customer service assistant for an e-commerce platform. Your goal is to efficiently assist customers by answering queries based on recent conversations, chat history, and product details.
 
@@ -126,34 +98,14 @@ Once the query type and relevant details are identified, invoke the `get_related
             response = "I don't know"
 
         return response
-    
+
     def get_history(self):
         for chat_item in self.__chat__._curated_history:
             print(type(chat_item))
-            for i,part in enumerate(chat_item.parts):
-                print("type of part",type(part))
+            for i, part in enumerate(chat_item.parts):
+                print("type of part", type(part))
                 print(f"------------------{i}---------------------------------")
-                print("function call :",part.function_call)
-                print("function_response :",part.function_response)
-                print("text :",part.text)
-                print("role :,",chat_item.role)
-
-
-# agent=GeminiAgentWithRAGTool()
-# ques="How much does the  Omega 4K OLED TV cost?"
-# answer=agent.send_msg(ques)
-# print("\n",ques)
-# print("\nanswer:",answer)
-# ques="Which is the best way of shipping in terms of cost for apple iphone?"
-# answer=agent.send_msg(ques)
-# print("\n",ques)
-# print("\nanswer:",answer)
-# agent=GeminiAgentWithRAGTool()
-# ques="How much does the  Omega 4K OLED TV cost?"
-# answer=agent.send_msg(ques)
-# print("\n",ques)
-# print("\nanswer:",answer)
-# ques="What are the smart Tvs that you have"
-# answer=agent.send_msg(ques)
-# print("\n",ques)
-# print("\nanswer:",answer)
+                print("function call :", part.function_call)
+                print("function_response :", part.function_response)
+                print("text :", part.text)
+                print("role :,", chat_item.role)
