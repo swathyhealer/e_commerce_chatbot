@@ -1,13 +1,15 @@
 from google import genai
 from google.genai import types
+import os
 from tools import get_related_products
+
+
+api_key = os.getenv("GEMINI_API_KEY")
 
 
 class GeminiAgentWithRAGTool:
     def __init__(self):
-        self.__client__ = genai.Client(
-            api_key="AIzaSyAgRL_W_f3sh3nx3cJTj7cPj5PRXzmLDOg"
-        )
+        self.__client__ = genai.Client(api_key=api_key)
 
         safety_settings = [
             types.SafetySetting(

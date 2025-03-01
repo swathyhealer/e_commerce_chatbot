@@ -1,4 +1,7 @@
+import os
 from agent import GeminiAgentWithRAGTool
+
+api_key = os.getenv("GEMINI_API_KEY")
 
 
 def run_agent():
