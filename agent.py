@@ -1,6 +1,7 @@
 from google import genai
 from google.genai import types
 import os
+import json
 from tools import get_related_products
 
 
@@ -102,12 +103,24 @@ Once the query type and relevant details are identified, invoke the `get_related
         return response
 
     def get_history(self):
+
+        chat_data = []
+
         for chat_item in self.__chat__._curated_history:
-            print(type(chat_item))
+            chat_entry = {"role": chat_item.role, "parts": []}
+
             for i, part in enumerate(chat_item.parts):
-                print("type of part", type(part))
-                print(f"------------------{i}---------------------------------")
-                print("function call :", part.function_call)
-                print("function_response :", part.function_response)
-                print("text :", part.text)
-                print("role :,", chat_item.role)
+                part_data = {
+                    "function_call": str(part.function_call),
+                    "function_response": str(part.function_response),
+                    "text": part.text,
+                }
+                chat_entry["parts"].append(part_data)
+
+            chat_data.append(chat_entry)
+
+        # Writing to JSON file
+        with open("chat_history.json", "w", encoding="utf-8") as f:
+            json.dump(chat_data, f, indent=4, ensure_ascii=False)
+
+        print("Chat history saved to chat_history.json")

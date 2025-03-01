@@ -18,11 +18,6 @@ def run_agent():
 
         print("customer service specialist :", str(response))
 
-    print(
-        "\n\n\n end---------------------------------------------------------------------------"
-    )
-    chat_agent.get_history()
-
 
 if __name__ == "__main__":
     run_agent()
