@@ -161,12 +161,14 @@ Based on the display types, the MirchiTab Max likely offers the best visual qual
 **You :**  can you tell me which has less shipping charge
 
 **customer service specialist :** Here's a comparison of the shipping charges:
-    *   LG 4K Smart TV:
-        *   Standard Shipping (5-7 business days): $24.99
-        *   Express Shipping (2-3 business days): $49.99
-    *   Omega 4K OLED TV:
-        *   Standard Shipping (5-7 business days): $22.99
-        *   Express Shipping (2-3 business days): $47.99
+
+* LG 4K Smart TV:
+    Standard Shipping (5-7 business days): $24.99
+    Express Shipping (2-3 business days): $49.99
+* Omega 4K OLED TV:
+        Standard Shipping (5-7 business days): $22.99
+        Express Shipping (2-3 business days): $47.99
+
 The Omega 4K OLED TV has less shipping charge.
 
 
