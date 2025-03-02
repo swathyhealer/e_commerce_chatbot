@@ -40,7 +40,7 @@ class ChromaVectorDB:
 
 
 def vector_db_setup(collection_name, product_json_path):
-    print("vector db setup initiated!!!!!")
+    print("Please wait for the vector database setup to complete!!!!!")
 
     with open(product_json_path, "r") as f:
         data = json.load(f)
@@ -48,6 +48,7 @@ def vector_db_setup(collection_name, product_json_path):
     vec_db = ChromaVectorDB(emb_model=GeminiEmbeddingModel())
     vec_db.create_collection(collection_name=collection_name)
     vec_db.update_collection(docs=prds)
+    print("completed setup!!!")
     return vec_db
 
 

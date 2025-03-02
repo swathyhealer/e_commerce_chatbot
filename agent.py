@@ -93,11 +93,10 @@ Once the query type and relevant details are identified, invoke the `get_related
 
     def send_msg(self, user_input):
         response = self.__chat__.send_message(user_input)
-        print(response)
         try:
             response = response.text
         except Exception as e:
-            print("exception:", e)
+            # print("exception:", e)
             response = "I don't know"
 
         return response
@@ -120,7 +119,7 @@ Once the query type and relevant details are identified, invoke the `get_related
             chat_data.append(chat_entry)
 
         # Writing to JSON file
-        with open("chat_history.json", "w", encoding="utf-8") as f:
+        with open("complete_workflow_history.json", "w", encoding="utf-8") as f:
             json.dump(chat_data, f, indent=4, ensure_ascii=False)
 
         print("Chat history saved to chat_history.json")

@@ -46,7 +46,7 @@ def get_related_products(
             )[0]
             results.extend(new_result)
     except (SyntaxError, ValueError) as e:
-        print(f"Error parsing string: {e}")
+        # print(f"Error parsing string: {e}")
         results = db_collection.get_matching_items(
             query_text=str(product_details), max_n_items=no_of_products_specified
         )[0]
